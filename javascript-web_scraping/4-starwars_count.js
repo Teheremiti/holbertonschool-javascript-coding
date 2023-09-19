@@ -10,8 +10,10 @@ request(url, (err, response, body) => {
   let appearancesCount = 0;
   const movies = JSON.parse(body).results;
   for (const movie of movies) {
-    if (movie.characters.includes('https://swapi-api.hbtn.io/api/people/18/')) {
-      appearancesCount++;
+    for (const character of movie.characters) {
+      if (character.includes('/18/')) {
+        appearancesCount++;
+      }
     }
   }
   console.log(appearancesCount);
