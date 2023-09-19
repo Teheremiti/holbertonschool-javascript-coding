@@ -7,11 +7,11 @@ request(url, (err, response, body) => {
     console.error(err);
   }
 
-  let appearancesCount = 0
+  let appearancesCount = 0;
   const movies = JSON.parse(body).results;
   for (const movie of movies) {
     if (movie.characters.includes('https://swapi-api.hbtn.io/api/people/18/')) {
-      count++;
+      appearancesCount++;
     }
   }
   console.log(appearancesCount);
