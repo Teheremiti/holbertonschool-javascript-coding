@@ -7,24 +7,17 @@ request(url, (err, response, body) => {
     console.error(err);
   }
 
-  const allUserTasks = JSON.parse(body);
-  const completedByUser = {
-    1: 0,
-    2: 0,
-    3: 0,
-    4: 0,
-    5: 0,
-    6: 0,
-    7: 0,
-    8: 0,
-    9: 0,
-    10: 0
-  };
-  for (const userTask of allUserTasks) {
-    if (userTask.completed === 'true') {
-      completedByUser[userTask.userId] += 1;
+  const ToDoList = JSON.parse(body);
+  const doneByUser = {};
+  for (const task of ToDoList) {
+    const uid = task.userId;
+    if (!doneByUser[uid]) {
+      doneByUser[uid] = 0;
+    }
+    if (task.completed === true) {
+      doneByUser[uid]++;
     }
   }
 
-  console.log(completedByUser);
+  console.log(doneByUser);
 });
