@@ -21,7 +21,7 @@ request(url, (err, response, body) => {
 
   for (const user in doneByUser) {
     if (doneByUser[user] === 0) {
-        delete(doneByUser[user]);
+      delete doneByUser[user];
     }
   }
 
