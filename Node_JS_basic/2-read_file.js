@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-module.exports = function counStudents(path) {
+function countStudents(path) {
   fs.readFile(path, (err, data) => {
     if (err) {
       throw new Error('Cannot load the database');
@@ -25,3 +25,5 @@ module.exports = function counStudents(path) {
     console.log(`Number of students in SWE: ${SWEcount}. List: ${SWEstudents.slice(0, -2)}`);
   });
 };
+
+module.exports = countStudents;
